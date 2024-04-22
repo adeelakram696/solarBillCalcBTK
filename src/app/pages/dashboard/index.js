@@ -1,6 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
-import { Table, Flex, Form } from 'antd';
+import {
+  Table, Flex, Form, Descriptions,
+} from 'antd';
 import {
   balances, k1Columns, k2Columns, k3Columns,
 } from './columns';
@@ -11,10 +13,8 @@ import {
 
 function App() {
   const [form] = Form.useForm();
-  // eslint-disable-next-line no-unused-vars
-  const [billOutput, setBillOutput] = useState({});
+  const [description, setDescription] = useState([]);
   const handleChanges = (_, allValues) => {
-    console.log(allValues);
     localStorage.setItem('inputValues', JSON.stringify(allValues));
     const k1rate = process.env.REACT_APP_IMPORT_UNIT_PRICE;
     const k2rate = process.env.REACT_APP_EXPORT_UNIT_PRICE;
@@ -32,8 +32,8 @@ function App() {
         ? 0
         : unitsExport - unitsImport
       : unitsExport - (unitsExport * 0.4);
-
     const k3Units = Math.round(k3Calc);
+    const unitsWasted = unitsExport - k2Units - k3Units;
     const k1Amount = Math.round(unitsImport * k1rate);
     const k2Amount = Math.round(k2Units * k2rate);
     const k3Amount = Math.round(k3Units * k3rate);
@@ -49,16 +49,27 @@ function App() {
       totalCurrentAmount,
       totalAmount: totalCurrentAmount - Number(balanceVal),
     });
-    setBillOutput({
-      k1: unitsImport,
-      k2: k2Units,
-      k3: k3Units,
-      k1Amount,
-      k2Amount,
-      k3Amount,
-      balance: Number(k1Amount) - (Number(balanceVal) + Number(k2Amount) + Number(k3Amount)),
-      isUnderQuarter,
-    });
+    const descriptionItems = [
+      {
+        key: '1',
+        label: 'Amount Payable',
+        children: totalCurrentAmount - Number(balanceVal),
+        span: 2,
+      },
+      {
+        key: '2',
+        label: 'Is Balance Reset(every quarter)',
+        children: isUnderQuarter ? 'No' : 'Yes',
+        span: 2,
+      },
+      {
+        key: '3',
+        label: 'Units Wasted',
+        children: unitsWasted,
+        span: 2,
+      },
+    ];
+    setDescription(descriptionItems);
   };
   const getUpdatedColumns = (column) => column.map((parentCol) => {
     const children = parentCol?.children?.map((col) => {
@@ -163,6 +174,7 @@ function App() {
           rowClassName={() => 'editable-row'}
         />
       </Form>
+      <Descriptions title="Info" bordered items={description} />
     </Flex>
   );
 }

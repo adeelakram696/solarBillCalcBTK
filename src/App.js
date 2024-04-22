@@ -19,17 +19,12 @@ function App() {
         },
         components: {
           Layout: {
-            bodyBg: '#E1EFF2',
-            headerBg: '#E1EFF2',
+            bodyBg: 'white',
           },
         },
       }}
     >
-      <Layout
-        style={{
-          padding: '0 8px 24px',
-        }}
-      >
+      <Layout>
         <Content
           style={{
             padding: 8,
