@@ -16,7 +16,7 @@ export const k1Columns = [
         editable: true,
       },
       {
-        title: 'Current',
+        title: 'Current (4 from meter)',
         dataIndex: 'k1current',
         width: '16%',
         editable: true,
@@ -56,7 +56,7 @@ export const k2Columns = [
         editable: true,
       },
       {
-        title: 'Current',
+        title: 'Current (5 from meter)',
         dataIndex: 'k2current',
         width: '16%',
         editable: true,
