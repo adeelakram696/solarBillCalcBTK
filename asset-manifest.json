@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/solarBillCalcBTK/static/css/main.3cfed96a.css",
-    "main.js": "/solarBillCalcBTK/static/js/main.8e3bcdec.js",
+    "main.js": "/solarBillCalcBTK/static/js/main.6d821549.js",
     "index.html": "/solarBillCalcBTK/index.html",
     "main.3cfed96a.css.map": "/solarBillCalcBTK/static/css/main.3cfed96a.css.map",
-    "main.8e3bcdec.js.map": "/solarBillCalcBTK/static/js/main.8e3bcdec.js.map"
+    "main.6d821549.js.map": "/solarBillCalcBTK/static/js/main.6d821549.js.map"
   },
   "entrypoints": [
     "static/css/main.3cfed96a.css",
-    "static/js/main.8e3bcdec.js"
+    "static/js/main.6d821549.js"
   ]
 }
