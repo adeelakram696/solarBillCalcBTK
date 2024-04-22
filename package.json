@@ -2,7 +2,7 @@
   "name": "solar-bill-btk",
   "version": "0.0.1",
   "private": false,
-  "homepage": "https://adeelakram696.github.io/solarbillcalcbtk",
+  "homepage": "https://adeelakram696.github.io/solarBillCalcBTK",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
