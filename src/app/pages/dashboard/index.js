@@ -22,7 +22,7 @@ function App() {
     const {
       month, k1previous, k2previous, prevBalance, k1current, k2current,
     } = allValues;
-    const isUnderQuarter = month % 3;
+    const isUnderQuarter = month % 3 || false;
     const balanceVal = isUnderQuarter ? prevBalance : 0;
     const unitsImport = k1current - k1previous;
     const unitsExport = k2current - k2previous;
@@ -52,8 +52,8 @@ function App() {
     const descriptionItems = [
       {
         key: '1',
-        label: 'Amount Payable',
-        children: totalCurrentAmount - Number(balanceVal),
+        label: 'Amount Payable + 2500',
+        children: totalCurrentAmount - Number(balanceVal) + 2500,
         span: 2,
       },
       {
